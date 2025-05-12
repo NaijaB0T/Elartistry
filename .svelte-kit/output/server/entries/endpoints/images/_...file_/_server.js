@@ -7,7 +7,9 @@ const imagesDir = path.join(__dirname, "../../../../../images");
 async function GET({ params }) {
   const filePath = path.join(imagesDir, params.file);
   try {
+    console.log("Requesting image:", filePath);
     if (!fs.existsSync(filePath)) {
+      console.error("Image not found:", filePath);
       throw error(404, "Image not found");
     }
     const image = fs.readFileSync(filePath);
@@ -19,6 +21,7 @@ async function GET({ params }) {
       }
     });
   } catch (err) {
+    console.error("Image serving error:", err.message);
     throw error(500, err.message);
   }
 }

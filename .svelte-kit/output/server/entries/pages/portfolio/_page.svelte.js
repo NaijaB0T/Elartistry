@@ -1,4 +1,4 @@
-import { c as create_ssr_component, v as validate_component, g as each, e as escape, d as add_attribute } from "../../../chunks/ssr.js";
+import { c as create_ssr_component, v as validate_component, h as each, e as escape, b as add_attribute } from "../../../chunks/ssr.js";
 import "../../../chunks/client.js";
 import { p as portfolioData } from "../../../chunks/photoData.js";
 import "clsx";
