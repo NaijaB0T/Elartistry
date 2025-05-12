@@ -1,4 +1,4 @@
-import { c as create_ssr_component, v as validate_component, e as escape, b as add_attribute } from "../../../chunks/ssr.js";
+import { c as create_ssr_component, v as validate_component, e as escape, d as add_attribute } from "../../../chunks/ssr.js";
 import { p as portfolioData } from "../../../chunks/photoData.js";
 import { A as AnimationContainer } from "../../../chunks/AnimationContainer.js";
 import { B as Button } from "../../../chunks/button.js";

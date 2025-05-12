@@ -6,7 +6,7 @@
   --primary-color: #111111;
   --secondary-color: #f2f2f2;
   --accent-color: #D4AF37;
-  --muted-color: #bbbbbb;
+  --muted-color: #e0e0e0;  /* Lightened for better contrast */
   --bg-color: #111111;
   --text-color: #f2f2f2;
 }
@@ -32,6 +32,50 @@ body {
   padding: 0;
 }
 
+/* Button style improvements */
+a[href="/portfolio"], 
+a[href^="/portfolio/"],
+a[href="/contact"],
+a[href="/about"] {
+  color: white !important;
+  font-weight: 600;
+}
+
+[data-theme="light"] a[href="/portfolio"], 
+[data-theme="light"] a[href^="/portfolio/"],
+[data-theme="light"] a[href="/contact"],
+[data-theme="light"] a[href="/about"] {
+  color: #111 !important;
+}
+
+/* Dark mode improvements for contrast */
+h1, h2, h3, h4, h5, h6 {
+  color: white !important;
+}
+
+/* Fix hero text in light mode */
+[data-theme="light"] h1, 
+[data-theme="light"] h2, 
+[data-theme="light"] h3, 
+[data-theme="light"] h4, 
+[data-theme="light"] h5, 
+[data-theme="light"] h6 {
+  color: #111111 !important;
+}
+
+/* Hero section text should always be white, regardless of theme */
+.absolute.inset-0.z-0 + .container h1,
+.absolute.inset-0.z-0 + .container p,
+.absolute.inset-0.z-0 + .container a {
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Button outline fix */
+.border.border-accent {
+  border-width: 2px;
+}
+
 /* Light mode overrides */
 [data-theme="light"] section,
 [data-theme="light"] footer,
@@ -40,7 +84,7 @@ body {
   color: #111111 !important;
 }
 
-[data-theme="light"] .bg-black\\\/20,
+[data-theme="light"] .bg-black\/20,
 [data-theme="light"] .bg-gray-800 {
   background-color: #f5f5f5 !important;
 }
@@ -55,6 +99,16 @@ body {
 
 [data-theme="light"] .text-muted {
   color: #666666 !important;
+}
+
+/* Ensure paragraph text is visible */
+p, .text-muted {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-theme="light"] p, 
+[data-theme="light"] .text-muted {
+  color: rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Animation classes */
@@ -115,4 +169,23 @@ body {
 
 .image-hover:hover {
   transform: scale(1.05);
+}
+
+/* Custom cursor */
+.cursor-custom {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+  z-index: 9999;
+}
+
+.cursor-custom.hover {
+  width: 40px;
+  height: 40px;
 }

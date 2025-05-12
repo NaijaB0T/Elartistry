@@ -1,5 +1,6 @@
 <script>
   import { cn } from '$lib/utils';
+  import { theme } from '$lib/stores/theme';
   
   /**
    * @type {"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"}
@@ -27,7 +28,7 @@
     {
       "bg-primary text-white hover:bg-primary/90": variant === "default",
       "bg-destructive text-destructive-foreground hover:bg-destructive/90": variant === "destructive",
-      "border border-accent bg-transparent hover:bg-accent hover:text-secondary": variant === "outline",
+      "border border-accent bg-transparent hover:bg-accent text-accent hover:text-white dark:text-white": variant === "outline",
       "bg-secondary text-secondary-foreground hover:bg-secondary/80": variant === "secondary",
       "hover:bg-accent/20 hover:text-accent": variant === "ghost",
       "underline-offset-4 hover:underline text-primary": variant === "link",

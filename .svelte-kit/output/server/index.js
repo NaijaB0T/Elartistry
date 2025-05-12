@@ -2,7 +2,7 @@ import { a as assets, b as base, c as app_dir, p as public_env, s as safe_public
 import { H as HttpError, S as SvelteKitError, j as json, t as text, R as Redirect, A as ActionFailure } from "./chunks/index.js";
 import * as devalue from "devalue";
 import { m as make_trackable, d as disable_search, a as decode_params, v as validate_layout_server_exports, b as validate_layout_exports, c as validate_page_server_exports, e as validate_page_exports, n as normalize_path, r as resolve, f as decode_pathname, g as validate_server_exports } from "./chunks/exports.js";
-import { r as readable, w as writable } from "./chunks/index2.js";
+import { n as noop, s as safe_not_equal } from "./chunks/ssr.js";
 import { parse, serialize } from "cookie";
 import * as set_cookie_parser from "set-cookie-parser";
 const BROWSER = false;
@@ -817,6 +817,53 @@ async function stream_to_string(stream) {
     result += decoder.decode(value);
   }
   return result;
+}
+const subscriber_queue = [];
+function readable(value, start) {
+  return {
+    subscribe: writable(value, start).subscribe
+  };
+}
+function writable(value, start = noop) {
+  let stop;
+  const subscribers = /* @__PURE__ */ new Set();
+  function set(new_value) {
+    if (safe_not_equal(value, new_value)) {
+      value = new_value;
+      if (stop) {
+        const run_queue = !subscriber_queue.length;
+        for (const subscriber of subscribers) {
+          subscriber[1]();
+          subscriber_queue.push(subscriber, value);
+        }
+        if (run_queue) {
+          for (let i = 0; i < subscriber_queue.length; i += 2) {
+            subscriber_queue[i][0](subscriber_queue[i + 1]);
+          }
+          subscriber_queue.length = 0;
+        }
+      }
+    }
+  }
+  function update(fn) {
+    set(fn(value));
+  }
+  function subscribe(run, invalidate = noop) {
+    const subscriber = [run, invalidate];
+    subscribers.add(subscriber);
+    if (subscribers.size === 1) {
+      stop = start(set, update) || noop;
+    }
+    run(value);
+    return () => {
+      subscribers.delete(subscriber);
+      if (subscribers.size === 0 && stop) {
+        stop();
+        stop = null;
+      }
+    };
+  }
+  return { set, update, subscribe };
 }
 function hash(...values) {
   let hash2 = 5381;

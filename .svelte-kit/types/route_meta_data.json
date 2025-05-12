@@ -12,9 +12,6 @@
 		"src/routes/contact/+page.js",
 		"src/routes/+layout.js"
 	],
-	"/images/[...file]": [
-		"src/routes/images/[...file]/+server.js"
-	],
 	"/portfolio": [
 		"src/routes/portfolio/+page.js",
 		"src/routes/+layout.js"

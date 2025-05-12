@@ -1,4 +1,4 @@
-import { c as create_ssr_component, g as createEventDispatcher, b as add_attribute, h as each, e as escape, v as validate_component } from "../../chunks/ssr.js";
+import { c as create_ssr_component, f as createEventDispatcher, d as add_attribute, g as each, e as escape, v as validate_component } from "../../chunks/ssr.js";
 import { p as portfolioData } from "../../chunks/photoData.js";
 import { s as shuffleArray, B as Button } from "../../chunks/button.js";
 import "clsx";

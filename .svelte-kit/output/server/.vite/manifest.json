@@ -38,13 +38,6 @@
     "file": "chunks/index.js",
     "name": "index"
   },
-  "_index2.js": {
-    "file": "chunks/index2.js",
-    "name": "index",
-    "imports": [
-      "_ssr.js"
-    ]
-  },
   "_internal.js": {
     "file": "chunks/internal.js",
     "name": "internal",
@@ -95,7 +88,7 @@
       "_internal.js",
       "_index.js",
       "_exports.js",
-      "_index2.js"
+      "_ssr.js"
     ]
   },
   "src/hooks.server.js": {
@@ -118,11 +111,10 @@
     "imports": [
       "_ssr.js",
       "_stores.js",
-      "_photoData.js",
-      "_index2.js"
+      "_photoData.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.-XEcLSyV.css"
+      "_app/immutable/assets/_layout.BalAGhWL.css"
     ]
   },
   "src/routes/+page.js": {

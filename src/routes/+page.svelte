@@ -102,8 +102,8 @@
       </p>
       
       <div in:fly={{ y: 40, duration: 800, delay: 600 }}>
-        <Button variant="outline" size="lg" class_="uppercase tracking-wider">
-          <a href="/portfolio">View Portfolio</a>
+        <Button variant="outline" size="lg" class_="uppercase tracking-wider bg-transparent border-white">
+          <a href="/portfolio" class="text-white hover:text-white">VIEW PORTFOLIO</a>
         </Button>
       </div>
     {/if}
@@ -266,8 +266,8 @@
                 <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">{project.title}</h3>
                 <p class="text-sm text-accent mb-4">{project.category} · {project.year}</p>
                 <p class="text-muted mb-6">{project.description}</p>
-                <Button variant="outline">
-                  <a href={`/portfolio/${project.id}`}>View Project</a>
+                <Button variant="outline" class_="bg-transparent border-accent">
+                  <a href={`/portfolio/${project.id}`} class="text-white">View Project</a>
                 </Button>
               </div>
               <div class={i % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
@@ -312,8 +312,8 @@
           <p class="text-muted max-w-2xl mx-auto mb-8">
             Interested in collaborating on a project? I'm available for freelance work and open to new opportunities.
           </p>
-          <Button variant="outline" size="lg" class_="uppercase tracking-wider">
-            <a href="/contact">Get in Touch</a>
+          <Button variant="outline" size="lg" class_="uppercase tracking-wider bg-transparent border-white">
+            <a href="/contact" class="text-white hover:text-white">Get in Touch</a>
           </Button>
         </AnimationContainer>
       {/if}

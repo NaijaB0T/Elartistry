@@ -243,28 +243,24 @@ function add_attribute(name, value, boolean) {
   const assignment = `="${escape(value, true)}"`;
   return ` ${name}${assignment}`;
 }
-function add_classes(classes) {
-  return classes ? ` class="${classes}"` : "";
-}
 function style_object_to_string(style_object) {
   return Object.keys(style_object).filter((key) => style_object[key] != null && style_object[key] !== "").map((key) => `${key}: ${escape_attribute_value(style_object[key])};`).join(" ");
 }
 export {
-  subscribe as a,
-  add_attribute as b,
+  setContext as a,
+  subscribe as b,
   create_ssr_component as c,
-  add_classes as d,
+  add_attribute as d,
   escape as e,
-  safe_not_equal as f,
-  createEventDispatcher as g,
-  each as h,
-  getContext as i,
-  compute_rest_props as j,
-  spread as k,
-  escape_attribute_value as l,
+  createEventDispatcher as f,
+  each as g,
+  getContext as h,
+  compute_rest_props as i,
+  spread as j,
+  escape_attribute_value as k,
+  escape_object as l,
   missing_component as m,
   noop as n,
-  escape_object as o,
-  setContext as s,
+  safe_not_equal as s,
   validate_component as v
 };
